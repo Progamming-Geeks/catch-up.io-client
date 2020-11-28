@@ -1,8 +1,5 @@
-<
-  import {
-    Sprite,
-    ArcadePhysics,
-  } from 'svelte-phaser';
+<script>
+  import { Sprite, ArcadePhysics } from 'svelte-phaser';
 </script>
 
 <Sprite depth={10} name="player" texture="textures/player" {x} {y}>
