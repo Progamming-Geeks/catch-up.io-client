@@ -1,6 +1,6 @@
 <script>
   import { Text, onInputEvent } from 'svelte-phaser'
-  import { score, lives, gameStatus, reset } from './store'
+  import { score, lives, gameStatus, reset } from '../store'
 
   // TODO update UI
 

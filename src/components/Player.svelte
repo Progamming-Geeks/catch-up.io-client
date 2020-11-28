@@ -8,7 +8,7 @@
     getSpawner,
     onGameEvent,
   } from 'svelte-phaser'
-  import { lives } from './store'
+  import { lives } from '../store'
 
   export let x
   export let y

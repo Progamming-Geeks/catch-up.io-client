@@ -3,12 +3,11 @@
   import { Game, Scene, Text, Spawner } from 'svelte-phaser';
   import fragment from 'svelte-fragment';
 
-  import LoadingBar from './LoadingBar.svelte';
-  import Background from './Background.svelte';
-  import Player from './Player.svelte';
-  import UI from './UI.svelte';
-  import { lives } from './store';
-  import Obstacles from './Obstacles.svelte';
+  import LoadingBar from './components/LoadingBar.svelte';
+  import Background from './components/Background.svelte';
+  import Player from './components/Player.svelte';
+  import UI from './components/UI.svelte';
+  import Obstacles from './components/Obstacles.svelte';
 
   let game;
 
