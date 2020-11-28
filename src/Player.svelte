@@ -8,7 +8,6 @@
     getSpawner,
     onGameEvent,
   } from 'svelte-phaser'
-  import Bullet from './Bullet.svelte'
   import { lives } from './store'
 
   export let x
@@ -63,7 +62,7 @@
   {x}
   {y}>
   <ArcadeCollider
-    with={['enemies', 'enemyBullet']}
+    with={['obstacle', 'player', 'other-player']}
     overlapOnly
     on:collide={() => lives.update((prev) => prev - 1)} />
   <ArcadePhysics {velocityX} {velocityY} collideWorldBounds />
