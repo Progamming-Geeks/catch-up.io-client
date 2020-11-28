@@ -1,16 +1,15 @@
 <script>
-  import { Scene, Spawner } from 'svelte-phaser';
+  import { Scene, Spawner, Camera, Text } from 'svelte-phaser';
+  import { thisPlayer } from '../store';
   import fragment from 'svelte-fragment';
 
   import LoadingBar from '../components/LoadingBar.svelte';
   import Background from '../components/Background.svelte';
   import Player from '../components/Player.svelte';
   import UI from '../components/UI.svelte';
+  import ViewRange from '../components/ViewRange.svelte';
   import Obstacles from '../components/Obstacles.svelte';
-
-  let game;
-
-  $: window.game = game;
+  import OtherPlayers from '../components/OtherPlayers.svelte';
 
   function preload(scene) {
     scene.load.image('textures/starfield', 'assets/starfield.png');
@@ -24,7 +23,10 @@
     });
     scene.load.image('textures/player', 'assets/ship.png');
     scene.load.image('textures/player/bullet', 'assets/bullet.png');
+    scene.load.image('textures/obstacle', 'assets/obstacle.png');
     scene.load.image('textures/enemy/bullet', 'assets/enemy-bullet.png');
+    scene.load.image('textures/view-range', 'assets/view-range.png');
+    scene.load.image('textures/grass', 'assets/grass.png');
   }
 
   function create(scene) {}
@@ -36,9 +38,21 @@
   </template>
 
   <Spawner>
+    <Camera
+      width={400}
+      height={400}
+      follow="player"
+      zoom={4}
+      lerp={0.3}
+      followOffsetX={200}
+      followOffsetY={200}>
+      <!-- <ViewRange /> -->
+      <Text text={`Players`} />
+      <UI />
+    </Camera>
     <Background />
     <Obstacles />
     <Player x={300} y={500} />
-    <UI />
+    <OtherPlayers />
   </Spawner>
 </Scene>

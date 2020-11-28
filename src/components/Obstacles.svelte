@@ -3,7 +3,7 @@
   import { obstacles } from '../store';
 </script>
 
-{#each $obstacles as obstacle (obstacle.key)}
+{#each $obstacles as obstacle}
   <Obstacle
     x={obstacle.x}
     y={obstacle.y}

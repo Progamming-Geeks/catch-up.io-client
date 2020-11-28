@@ -1,5 +1,5 @@
 <script>
-  import { Rectangle } from 'svelte-phaser';
+  import { Rectangle, TileSprite, ArcadePhysics } from 'svelte-phaser';
 
   export let x;
   export let y;
@@ -7,4 +7,12 @@
   export let height;
 </script>
 
-<Rectangle name="obstacle" {x} {y} {width} {height} fillColor={0xff000} />
+<TileSprite
+  name="obstacle"
+  {x}
+  {y}
+  {width}
+  {height}
+  texture="textures/obstacle">
+  <ArcadePhysics immovable />
+</TileSprite>

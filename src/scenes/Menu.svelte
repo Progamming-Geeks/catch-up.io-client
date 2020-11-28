@@ -1,9 +1,7 @@
 <script>
-  import { Scene, Text } from 'svelte-phaser';
+  import { Scene, Text, getScene, onInputEvent } from 'svelte-phaser';
 
-  let game;
-
-  $: window.game = game;
+  const scene = getScene();
 
   function preload(scene) {}
 

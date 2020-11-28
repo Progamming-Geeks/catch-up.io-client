@@ -4,10 +4,14 @@
   import { gameStatus } from './store';
   import Menu from './scenes/Menu.svelte';
   import Playing from './scenes/Playing.svelte';
+  import { updateColor, updateName, startGame } from './socket';
+  import { map } from './store';
 
   let game;
 
-  $: window.game = game;
+  // $: window.game = game;
+
+  startGame();
 </script>
 
 <style>
@@ -21,8 +25,8 @@
 
 <Game
   bind:instance={game}
-  width={800}
-  height={600}
+  width={$map.width}
+  height={$map.height}
   physics={{ default: 'arcade' }}
   scale={{ mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH }}>
   {#if $gameStatus === 'menu'}

@@ -1,10 +1,31 @@
 <script>
-  import { Sprite, ArcadePhysics, ArcadeCollider } from 'svelte-phaser';
+  import {
+    Ellipse,
+    Sprite,
+    ArcadePhysics,
+    ArcadeCollider,
+  } from 'svelte-phaser';
 
-  export let x;
-  export let y;
-  export let width;
-  export let height;
+  $: {
+    console.log('reactive', player);
+  }
+
+  function hexStringToNumber(hex) {
+    return parseInt(hex.replace('#', ''), 16);
+  }
+
+  $: {
+    console.log('player.size', player.size);
+  }
+
+  export let player;
 </script>
 
-<Sprite name="other-player" {x} {y} {width} {height} />
+<Ellipse
+  depth={11}
+  x={player.x}
+  y={player.y}
+  width={10 * player.size}
+  height={10 * player.size}
+  angle={player.rotation}
+  fillColor={hexStringToNumber(player.color)} />
