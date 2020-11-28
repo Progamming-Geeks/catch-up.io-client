@@ -1,5 +1,4 @@
 <script>
-  import Phaser from 'phaser'
   import {
     Sprite,
     ArcadePhysics,
@@ -8,13 +7,11 @@
     getSpawner,
     onGameEvent,
   } from 'svelte-phaser'
-  import { lives } from '../store'
 
   export let x
   export let y
   export let instance = undefined
 
-  const { spawn } = getSpawner()
   const scene = getScene()
   const X_SPEED = 200
   const Y_SPEED = 200

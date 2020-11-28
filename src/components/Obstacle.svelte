@@ -1,5 +1,5 @@
 <script>
-  import { Sprite, ArcadePhysics, ArcadeCollider } from 'svelte-phaser';
+  import { Rectangle } from 'svelte-phaser';
 
   export let x;
   export let y;
@@ -7,4 +7,4 @@
   export let height;
 </script>
 
-<Sprite name="obstacle" {x} {y} {width} {height} />
+<Rectangle name="obstacle" {x} {y} {width} {height} fillColor={0xff000} />

@@ -1,17 +1,17 @@
 <script>
-  import { Text, onInputEvent } from 'svelte-phaser'
-  import { score, lives, gameStatus, reset } from '../store'
+  import { Text, onInputEvent } from 'svelte-phaser';
+  import { gameStatus } from '../store';
 
   // TODO update UI
 
-  onInputEvent('pointerdown', () => {
-    if ($gameStatus !== 'playing') {
-      reset()
-    }
-  })
+  // onInputEvent('pointerdown', () => {
+  //   if ($gameStatus !== 'playing') {
+  //     reset();
+  //   }
+  // });
 </script>
 
-<Text x={16} y={16} text={`Score: ${$score}`} />
+<!-- <Text x={16} y={16} text={`Score: ${$score}`} />
 <Text x={700} y={16} text={`Lives: ${$lives}`} />
 <Text x={180} y={575} text="Move with arrow keys, shoot with spacebar" />
 
@@ -23,4 +23,4 @@
     fontSize="48px"
     align="center" />
   <Text x={280} y={265} text="Click to restart" fontSize="20px" />
-{/if}
+{/if} -->
