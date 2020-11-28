@@ -1,22 +1,35 @@
-import * as Sockette from 'sockette';
+import io from 'socket.io-client';
 import { ws } from './config';
+import {
+  map,
+  obstacles,
+  players,
+  seeker,
+  updatePlayer,
+  socketId,
+} from './store';
 
-const ws = new Sockette(ws.url, {
-  timeout: ws.timeout,
-  maxAttempts: ws.maxAttempts,
-  onopen: (e) => console.log('Connected!', e),
-  onmessage: (e) => console.log('Received:', e),
-  onreconnect: (e) => console.log('Reconnecting...', e),
-  onmaximum: (e) => console.log('Stop Attempting!', e),
-  onclose: (e) => console.log('Closed!', e),
-  onerror: (e) => console.log('Error:', e),
+const socket = io(ws.url);
+
+socket.on('connection', (conn) => {
+  console.log('connection', conn);
+  socketId.set(conn.id);
 });
 
-ws.send('Hello, world!');
-ws.json({ type: 'ping' });
-ws.close(); // graceful shutdown
+socket.on('map-updated', (update) => {
+  console.log('map-updated', update);
+  obstacles.set(update.obstacles);
+  map.set({ width: update.width, height: update.height });
+  players.set(update.player);
+  seeker.set(update.seeker);
+});
 
-// Reconnect 10s later
-setTimeout(ws.reconnect, 10e3);
+socket.on('player-updated', () => {
+  console.log('player-updated', player);
+  updatePlayer(player);
+});
 
-// TODO write to state
+socket.on('player-leaved', () => {
+  console.log('player-leaved', player);
+  removePlayer(player);
+});
