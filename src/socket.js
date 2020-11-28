@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { ws } from './config';
+import * as config from './config';
 import {
   map,
   obstacles,
@@ -9,7 +9,7 @@ import {
   socketId,
 } from './store';
 
-const socket = io(ws.url);
+const socket = io(config.ws);
 
 socket.on('connection', (conn) => {
   console.log('connection', conn);

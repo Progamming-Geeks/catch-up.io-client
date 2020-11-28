@@ -1,4 +1,4 @@
-import { get, writable } from 'svelte/store';
+import { get, writable, derived } from 'svelte/store';
 
 export const gameStatus = writable('playing');
 
@@ -19,12 +19,12 @@ export const seeker = writable({
 
 export const socketId = writable(NaN);
 
+export const players = writable([]);
+
 export const thisPlayer = derived(
   [players, socketId],
   ([$players, $socketId]) => $players.find(({ id }) => (id = $socketId))
 );
-
-export const players = writable([]);
 
 export const obstacles = writable([]);
 
